@@ -1,5 +1,5 @@
 # package-retriever
-Bash script that gets c or c++ source files(header and implementation) from a public repository.
+Bash script that downloads c or c++ source files(header and implementation) from a specified public github repository
 
 ## How to install
 
