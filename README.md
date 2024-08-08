@@ -12,8 +12,8 @@ Bash script that downloads c or c++ source files(header and implementation) from
 
 The script is able to:
 
-- [x] 1. Download repositories from just myself(libertymaxi), but just the whole repository
+- ✅ 1. Download repositories from just myself(libertymaxi), but just the whole repository
 
-- [x] Download public repositories from multiple github users
+- ✅ Download public repositories from multiple github users
 
-- [x] Retrieve specific libraries from the repository, while correctly handling necessary dependencies
+- ✅ Retrieve specific libraries from the repository, while correctly handling necessary dependencies
