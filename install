@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod +x getpack
+sudo cp getpack /usr/bin/getpack

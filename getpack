@@ -1,0 +1,34 @@
+#!/bin/bash
+
+num_args=$#
+
+echo "$num_args"
+echo "Hello world"
+exit 1
+
+repo_user="$1"
+repo_name="$2"
+
+repository_url="https://github.com/$repo_user/$repo_name/archive/refs/heads/main.zip"
+
+destination_dir=$(pwd)
+
+echo "Downloading $repo_name from $repo_user..."
+sudo wget -O $destination_dir/$repo_name.zip $repository_url -q
+
+# Check if the download was successful
+if [ $? -eq 0 ]; then
+  echo "Download successful, extracting the repository..."
+  # Extract the zipball
+  unzip $destination_dir/$repo_name.zip -d $destination_dir
+  # Remove the zip file
+  rm -f $destination_dir/$repo_name.zip
+  # Move the extracted files to the correct directory
+  mv -y $destination_dir/$repo_name-main $destination_dir/$repo_name
+  rm -rf $destination_dir/$repo_name-main
+
+  echo "Repository $repo_name downloaded and extracted to $destination_dir"
+else
+  echo "Failed to download the repository"
+  rm .zip
+fi

@@ -12,7 +12,7 @@ Bash script that downloads c or c++ source files(header and implementation) from
 
 The script is able to:
 
-- ✅ 1. Download repositories from just myself(libertymaxi), but just the whole repository
+- ✅ Download repositories from just myself(libertymaxi), but just the whole repository
 
 - ✅ Download public repositories from multiple github users
 
