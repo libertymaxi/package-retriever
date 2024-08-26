@@ -1,10 +1,35 @@
 #!/bin/bash
 
+help_message() {
+    echo "Usage: getpack [options] user repo...
+Options:
+  -h, --help:              Display this information.
+  -i, --install:           Installs the script.
+  -u, --uninstall:         Uninstalls the script, deleting it."
+}
+
 num_args=$#
 
-echo "$num_args"
-echo "Hello world"
-exit 1
+# Flags section
+help=0
+install=0
+uninstall=0
+
+if [[ $# -eq 1 ]]; then
+  if [[ "$1" == "-i" || "$1" == "--install" ]]; then
+    echo "Used the install flag"
+    exit 1
+  elif [[ "$1" == "-u" || "$1" == "--uninstall" ]]; then
+    echo "Used the uninstall flag"
+    exit 1
+  elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    help_message
+    exit 1
+  fi
+else
+  echo "wtf is this"
+  exit 1
+fi
 
 repo_user="$1"
 repo_name="$2"
@@ -24,7 +49,7 @@ if [ $? -eq 0 ]; then
   # Remove the zip file
   rm -f $destination_dir/$repo_name.zip
   # Move the extracted files to the correct directory
-  mv -y $destination_dir/$repo_name-main $destination_dir/$repo_name
+  mv $destination_dir/$repo_name-main $destination_dir/$repo_name
   rm -rf $destination_dir/$repo_name-main
 
   echo "Repository $repo_name downloaded and extracted to $destination_dir"
