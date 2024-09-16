@@ -10,12 +10,10 @@ Options:
 
 num_args=$#
 
-# Flags section
-help=0
-install=0
-uninstall=0
+# flags
+download=0
 
-if [[ $# -eq 1 ]]; then
+if [[ $num_args -eq 1 ]]; then
   if [[ "$1" == "-i" || "$1" == "--install" ]]; then
     echo "Used the install flag"
     exit 1
@@ -25,14 +23,24 @@ if [[ $# -eq 1 ]]; then
   elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
     help_message
     exit 1
+  else
+    echo -e -n "getpack: \033[31merror\033[0m. "
+    echo "Use getpack -h/--help to get some help"
+    exit 1
   fi
-else
-  echo "wtf is this"
-  exit 1
+elif [[ $num_args -ge 3 ]]; then
+  if [[ $1 == "-d" || $1 == "--download" ]]; then
+    download=1
+    repo_user="$1"
+    repo_name="$2"
+  else
+    echo "wtf is this"
+    exit 1
+  fi
 fi
 
-repo_user="$1"
-repo_name="$2"
+echo "download = $download"
+exit 1
 
 repository_url="https://github.com/$repo_user/$repo_name/archive/refs/heads/main.zip"
 
